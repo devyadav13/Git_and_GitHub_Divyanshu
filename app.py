@@ -17,6 +17,26 @@ from pymongo import MongoClient
 from pymongo.errors import PyMongoError, ConnectionFailure, ConfigurationError
 from dotenv import load_dotenv
 
+from flask import request
+from pymongo import MongoClient
+import os
+
+client = MongoClient(os.environ.get("MONGO_URI"))
+db = client["flask_git_demo"]
+todo_collection = db["todo_items"]
+
+@app.route("/submittodoitem", methods=["POST"])
+def submit_todo_item():
+    item_name = request.form.get("itemName")
+    item_description = request.form.get("itemDescription")
+    if not item_name or not item_description:
+        return {"error": "itemName and itemDescription are required"}, 400
+    result = todo_collection.insert_one({
+        "itemName": item_name,
+        "itemDescription": item_description
+    })
+    return {"message": "Saved successfully", "id": str(result.inserted_id)}, 201
+
 # ---------------------------------------------------------------------------
 # Setup
 # ---------------------------------------------------------------------------
