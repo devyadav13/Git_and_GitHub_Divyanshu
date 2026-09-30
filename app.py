@@ -124,6 +124,10 @@ def submit():
 def success():
     return render_template("success.html")
 
+@app.route("/todo")
+def todo_page():
+    return render_template("todo.html")
+
 
 if __name__ == "__main__":
     # debug=True is fine for local development on Windows; turn off in production
