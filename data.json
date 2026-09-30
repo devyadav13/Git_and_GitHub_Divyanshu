@@ -1,0 +1,9 @@
+{
+  "students": [
+    {"id": 1, "name": "Divyanshu Yadav", "course": "Full Stack Development", "city": "Indore"},
+    {"id": 2, "name": "Aman Sharma", "course": "Data Science", "city": "Bhopal"},
+    {"id": 3, "name": "Priya Verma", "course": "Cloud Computing", "city": "Pune"},
+    {"id": 4, "name": "Rohit Singh", "course": "Cyber Security", "city": "Delhi"},
+    {"id": 5, "name": "Neha Gupta", "course": "AI & ML", "city": "Mumbai"}
+  ]
+}

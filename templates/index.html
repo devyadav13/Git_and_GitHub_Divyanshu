@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Flask + MongoDB Atlas Form</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>Flask + MongoDB Atlas</h1>
+    <p class="subtitle">Submit the form below. Data is stored in MongoDB Atlas.</p>
+
+    <p><a href="{{ url_for('api') }}" target="_blank">View /api JSON route</a></p>
+
+    {% if error %}
+      <div class="error-box">
+        <strong>Error:</strong> {{ error }}
+      </div>
+    {% endif %}
+
+    <form action="{{ url_for('submit') }}" method="POST" class="data-form">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" value="{{ old_data.get('name', '') }}" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" value="{{ old_data.get('email', '') }}" required>
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="4" required>{{ old_data.get('message', '') }}</textarea>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+</html>
